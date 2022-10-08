@@ -29,12 +29,16 @@ def valid_data(information):
     information = data(city())
   temp = information["main"]["temp"]
   temp_max = information["main"]["temp_max"]
-  return temp, temp_max
+  name = information["name"]
+  return temp, temp_max, name
 
 #Function to print temperatures
-def temperatures(temp, temp_max):
+def temperatures(temp, temp_max, name):
+  print(f"City: {name}")
   print(f"The current temp is: {temp}")
   print(f"The current max temp is: {temp_max}")
+  
+
 
 #Function to re-run the program
 def user_response():
@@ -42,10 +46,10 @@ def user_response():
 
 #Function combining all functions
 def main(response):
-  while response == "y":
+  while response == "y" or "yes":
     rough_information = data(city())
-    temp, temp_max = valid_data(rough_information)
-    temperatures(temp, temp_max)
+    temp, temp_max, name = valid_data(rough_information)
+    temperatures(temp, temp_max, name)
     response = user_response()
   print("Have a great day!")
 
